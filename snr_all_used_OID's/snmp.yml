@@ -1,0 +1,558 @@
+# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
+SNR:
+  walk:
+  - 1.3.6.1.2.1.17.2.15.1.3
+  - 1.3.6.1.2.1.2.2.1.1
+  - 1.3.6.1.2.1.2.2.1.2
+  - 1.3.6.1.2.1.2.2.1.7
+  - 1.3.6.1.2.1.2.2.1.8
+  - 1.3.6.1.2.1.31.1.1.1.1
+  - 1.3.6.1.2.1.31.1.1.1.10
+  - 1.3.6.1.2.1.31.1.1.1.15
+  - 1.3.6.1.2.1.31.1.1.1.18
+  - 1.3.6.1.2.1.31.1.1.1.6
+  - 1.3.6.1.4.1.40418.7.100.1.7.1.2
+  - 1.3.6.1.4.1.40418.7.100.1.8.1.10
+  - 1.3.6.1.4.1.40418.7.100.1.8.1.11
+  - 1.3.6.1.4.1.40418.7.100.1.8.1.12
+  - 1.3.6.1.4.1.40418.7.100.1.8.1.7
+  - 1.3.6.1.4.1.40418.7.100.1.8.1.8
+  - 1.3.6.1.4.1.40418.7.100.1.9.1.3
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.1
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.15
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.2
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.23
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.28
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.3
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.4
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.5
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.7
+  - 1.3.6.1.4.1.40418.7.100.3.2.1.8
+  - 1.3.6.1.4.1.40418.7.100.4.3.1.3
+  - 1.3.6.1.4.1.40418.7.100.4.3.1.5
+  get:
+  - 1.3.6.1.2.1.1.3.0
+  - 1.3.6.1.4.1.40418.7.100.1.2.0
+  - 1.3.6.1.4.1.40418.7.100.1.3.0
+  - 1.3.6.1.4.1.40418.7.100.1.5.0
+  metrics:
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+    help: The time (in hundredths of a second) since the network management portion
+      of the system was last re-initialized. - 1.3.6.1.2.1.1.3
+  - name: dot1dStpPortState
+    oid: 1.3.6.1.2.1.17.2.15.1.3
+    type: gauge
+    help: The port's current state, as defined by application of the Spanning Tree
+      Protocol - 1.3.6.1.2.1.17.2.15.1.3
+    indexes:
+    - labelname: dot1dStpPort
+      type: gauge
+    enum_values:
+      1: disabled
+      2: blocking
+      3: listening
+      4: learning
+      5: forwarding
+      6: broken
+  - name: ifIndex
+    oid: 1.3.6.1.2.1.2.2.1.1
+    type: gauge
+    help: A unique value for each interface - 1.3.6.1.2.1.2.2.1.1
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifAlias
+      oid: 1.3.6.1.2.1.31.1.1.1.18
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifAdminStatus
+    oid: 1.3.6.1.2.1.2.2.1.7
+    type: gauge
+    help: The desired state of the interface - 1.3.6.1.2.1.2.2.1.7
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifAlias
+      oid: 1.3.6.1.2.1.31.1.1.1.18
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+    enum_values:
+      1: up
+      2: down
+      3: testing
+  - name: ifOperStatus
+    oid: 1.3.6.1.2.1.2.2.1.8
+    type: gauge
+    help: The current operational state of the interface - 1.3.6.1.2.1.2.2.1.8
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifAlias
+      oid: 1.3.6.1.2.1.31.1.1.1.18
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+    enum_values:
+      1: up
+      2: down
+      3: testing
+  - name: ifHCOutOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.10
+    type: counter
+    help: The total number of octets transmitted out of the interface, including framing
+      characters - 1.3.6.1.2.1.31.1.1.1.10
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifAlias
+      oid: 1.3.6.1.2.1.31.1.1.1.18
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifHighSpeed
+    oid: 1.3.6.1.2.1.31.1.1.1.15
+    type: gauge
+    help: An estimate of the interface's current bandwidth in units of 1,000,000 bits
+      per second - 1.3.6.1.2.1.31.1.1.1.15
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifAlias
+      oid: 1.3.6.1.2.1.31.1.1.1.18
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifHCInOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.6
+    type: counter
+    help: The total number of octets received on the interface, including framing
+      characters - 1.3.6.1.2.1.31.1.1.1.6
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifAlias
+      oid: 1.3.6.1.2.1.31.1.1.1.18
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: sysHardwareVersion
+    oid: 1.3.6.1.4.1.40418.7.100.1.2
+    type: DisplayString
+    help: The version information of switch hardware - 1.3.6.1.4.1.40418.7.100.1.2
+  - name: sysSoftwareVersion
+    oid: 1.3.6.1.4.1.40418.7.100.1.3
+    type: DisplayString
+    help: The version information of switch software - 1.3.6.1.4.1.40418.7.100.1.3
+  - name: sysCPUMac
+    oid: 1.3.6.1.4.1.40418.7.100.1.5
+    type: OctetString
+    help: The MAC Address of the switch's CPU - 1.3.6.1.4.1.40418.7.100.1.5
+  - name: sysPowerState
+    oid: 1.3.6.1.4.1.40418.7.100.1.7.1.2
+    type: gauge
+    help: if the power supply insert - 1.3.6.1.4.1.40418.7.100.1.7.1.2
+    indexes:
+    - labelname: sysPowerSlotIndex
+      type: gauge
+    enum_values:
+      0: sysPowerNotInstalled
+      1: sysPowerInstalled
+  - name: sysTemperature
+    oid: 1.3.6.1.4.1.40418.7.100.1.8.1.10
+    type: gauge
+    help: The Temperature of this slot.80 is 80centigrade, but -100 means that the
+      slot does not support temperature display - 1.3.6.1.4.1.40418.7.100.1.8.1.10
+    indexes:
+    - labelname: sysSlotIndex
+      type: gauge
+  - name: sysCpuUsage
+    oid: 1.3.6.1.4.1.40418.7.100.1.8.1.11
+    type: gauge
+    help: The CPU usage of this slot. - 1.3.6.1.4.1.40418.7.100.1.8.1.11
+    indexes:
+    - labelname: sysSlotIndex
+      type: gauge
+  - name: sysMemoryUsage
+    oid: 1.3.6.1.4.1.40418.7.100.1.8.1.12
+    type: gauge
+    help: The memory usage of this slot. - 1.3.6.1.4.1.40418.7.100.1.8.1.12
+    indexes:
+    - labelname: sysSlotIndex
+      type: gauge
+  - name: sysMemorySize
+    oid: 1.3.6.1.4.1.40418.7.100.1.8.1.7
+    type: gauge
+    help: memory size - 1.3.6.1.4.1.40418.7.100.1.8.1.7
+    indexes:
+    - labelname: sysSlotIndex
+      type: gauge
+  - name: sysMemoryBusy
+    oid: 1.3.6.1.4.1.40418.7.100.1.8.1.8
+    type: gauge
+    help: memory usage rent - 1.3.6.1.4.1.40418.7.100.1.8.1.8
+    indexes:
+    - labelname: sysSlotIndex
+      type: gauge
+  - name: swModuleType
+    oid: 1.3.6.1.4.1.40418.7.100.1.9.1.3
+    type: gauge
+    help: Type of expansion module in this switch slot. - 1.3.6.1.4.1.40418.7.100.1.9.1.3
+    indexes:
+    - labelname: swSlotIndex
+      type: gauge
+    - labelname: swUnitIndex
+      type: gauge
+    enum_values:
+      0: typeMFC
+      1: typeSFC
+      2: type1GS
+      3: type1GL
+      4: type100M1GT
+      8: type10M100MT
+      101: type1-M12GB
+      102: type1-12GT
+      103: type1-210Gx
+      104: type1-110Gx
+      105: type1-CPU8245
+      106: type1-BACKPLANE
+      107: type1-24GB
+      108: type1-24GT
+      109: type1-36TX
+      110: type1-4GX32TX
+      111: type1-16FX
+      112: type1-ES2GB
+      113: type1-M4GX24TX
+      114: type1-ES
+      115: type1-MI
+      116: type1-MII
+      117: type1-12GB
+      118: type1-M8GB
+      119: type1-2XFP8GX16GB
+      120: type1-8GX16GB
+      121: type1-4GX24TX
+      122: type1-L-M4GX24TX
+      123: type1-1XFP8GX16GB
+      124: type1-2XFP12GX12GT
+      125: type1-12GX12GT
+      126: type1-1XFP12GX12GT
+      127: type1-48GT
+      128: type1-M1XFP12GX12GT
+      129: type1-4XFP
+      130: type1-48GB
+      131: type1-M44GT
+      132: type1-M1XFP12GX12GB
+      133: type1-12GX12GB
+      134: type1-2XFP12GX12GB
+      135: type1-4GB12GX8GT
+      136: type1-2XFP24GB12GT
+      137: type1-24GB12GT
+      138: type1-NEWMI
+      139: type1-M1XFP12GX12GTR4
+      140: type1-12GX12GTR4
+      141: type1-2XFP12GX12GTR4
+      142: type1-E-24GB12GT
+      143: type1-E-2XFP24GB12GT
+      144: type1-MSC
+      145: type8QSFP
+      146: type1-FW
+      147: type1-OF
+      148: type1-MIIR2
+      149: type1-E-M16GX8GB
+      150: type1-E-4XS16GX8GB
+      151: type1-2XFP12GX12GTR5
+      152: type1-MIIR3
+      154: type1-M2XS8GX16GB
+      155: type1-28GB16GT4XS
+      156: type1-E-48GT
+      157: type1-44GB4XS
+      158: type1-20XS2Q
+      159: type1-M2Q20G12XS
+      160: type1-2Q20G16XS
+      165: type2-M12GB
+      166: type2-12GT
+      167: type2-210Gx
+      168: type2-110Gx
+      169: type2-CPU8245
+      170: type2-BACKPLANE
+      171: type2-24GB
+      172: type2-24GT
+      173: type2-36TX
+      174: type2-4GX32TX
+      175: type2-16FX
+      176: type2-ES2GB
+      177: type2-M4GX24TX
+      178: type2-ES
+      179: type2-MI
+      180: type2-MII
+      181: type2-12GB
+      182: type2-M8GB
+      183: type2-2XFP8GX16GB
+      184: type2-8GX16GB
+      185: type2-4GX24TX
+      186: type2-L-M4GX24TX
+      187: type2-1XFP8GX16GB
+      188: type2-2XFP12GX12GT
+      189: type2-12GX12GT
+      190: type2-1XFP12GX12GT
+      191: type2-48GT
+      192: type2-M1XFP12GX12GT
+      193: type2-4XFP
+      194: type2-48GB
+      195: type2-M44GT
+      196: type2-M1XFP12GX12GB
+      197: type2-12GX12GB
+      198: type2-2XFP12GX12GB
+      199: type2-4GB12GX8GT
+      200: type2-2XFP24GB12GT
+      201: type2-24GB12GT
+      202: type2-NEWMI
+      203: type2-M1XFP12GX12GTR4
+      204: type2-12GX12GTR4
+      205: type2-2XFP12GX12GTR4
+      206: type2-E-24GB12GT
+      207: type2-E-2XFP24GB12GT
+      208: type2-MSC
+      209: type2-M1XFP12GX12GTV
+      210: type2-FW
+      211: type2-OF
+      212: type2-MIIR2
+      213: type2-E-M16GX8GB
+      214: type2-E-4XS16GX8GB
+      215: type2-2XFP12GX12GTR5
+      216: type2-MIIR3
+      218: type2-M2XS8GX16GB
+      219: type2-28GB16GT4XS
+      220: type2-E-48GT
+      221: type2-44GB4XS
+      222: type2-20XS2Q
+      228: type3-M
+      229: type3-MI
+      230: type3-MII
+      231: type3-24GT
+      232: type3-24GB
+      233: type3-ES-FW
+      234: type3-4XFP
+      235: type3-8XFP
+      236: type3-24GT-V
+      237: type3-24GB-V
+      238: type3-24SFP-PLUS
+      239: type3-SUP
+      240: type3-FAB
+      241: type3-MSC
+      242: type3-24GT-WS
+      243: type3-24GB-WS
+      244: type3-FW
+      245: type3-8QSFP
+      246: type3-OF
+      247: type3-20XS2Q
+      248: type3-FAB-TWO-CHIP
+      299: type3-08BACKPLANE
+      300: type4-4GT
+      301: type4-4FX
+      302: type4-2GB
+      303: type4-4TX
+      304: type4-4GB
+      305: type4-4FB
+      320: type5-M16K-SUP
+      321: type5-M16K-16Q
+      322: type5-M16K-FC
+      323: type5-M16K-48XS2Q
+      324: type5-M16K-24T24S2XS
+      326: type5-DCFW-1800-M16K
+  - name: portIndex
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.1
+    type: gauge
+    help: port No. - 1.3.6.1.4.1.40418.7.100.3.2.1.1
+    indexes:
+    - labelname: portIndex
+      type: gauge
+  - name: portMode
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.15
+    type: gauge
+    help: 'port mode: 1 is access,2 is trunk,3 is hybrid - 1.3.6.1.4.1.40418.7.100.3.2.1.15'
+    indexes:
+    - labelname: portIndex
+      type: gauge
+    enum_values:
+      1: access
+      2: trunk
+      3: hybrid
+  - name: portName
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.2
+    type: DisplayString
+    help: Name of the port - 1.3.6.1.4.1.40418.7.100.3.2.1.2
+    indexes:
+    - labelname: portIndex
+      type: gauge
+  - name: portBandWidthUsage
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.23
+    type: OctetString
+    help: The percentage of the port's bandwidth usage - 1.3.6.1.4.1.40418.7.100.3.2.1.23
+    indexes:
+    - labelname: portIndex
+      type: gauge
+  - name: transceiverSn
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.28
+    type: DisplayString
+    help: serial num of transceiver.if port is not a transceiver,value is null. -
+      1.3.6.1.4.1.40418.7.100.3.2.1.28
+    indexes:
+    - labelname: portIndex
+      type: gauge
+  - name: switchNum
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.3
+    type: gauge
+    help: This value is denoting the number of swith in which this port resides -
+      1.3.6.1.4.1.40418.7.100.3.2.1.3
+    indexes:
+    - labelname: portIndex
+      type: gauge
+  - name: slotNum
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.4
+    type: gauge
+    help: This value is denoting the number of slot - 1.3.6.1.4.1.40418.7.100.3.2.1.4
+    indexes:
+    - labelname: portIndex
+      type: gauge
+  - name: portType
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.5
+    type: gauge
+    help: Type of expansion module in this port. - 1.3.6.1.4.1.40418.7.100.3.2.1.5
+    indexes:
+    - labelname: portIndex
+      type: gauge
+    enum_values:
+      0: typeSFP
+      1: typeCombo
+      2: typeFiber
+      3: typeSingleOptFE
+      4: typeMultiOptFE
+      5: typeElecFE
+      6: typeSingleOptGE
+      7: typeMultiOptGE
+      8: typeElecGE
+      9: typePortAGG
+      10: typePortUsbGE
+      11: typeOptXge
+      12: typeElecXge
+      255: other
+  - name: bandwidthControlStatus
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.7
+    type: gauge
+    help: The bandwidth-control status of the port - 1.3.6.1.4.1.40418.7.100.3.2.1.7
+    indexes:
+    - labelname: portIndex
+      type: gauge
+    enum_values:
+      0: ingress
+      1: egress
+      2: both
+      3: none
+  - name: maxBandwidth
+    oid: 1.3.6.1.4.1.40418.7.100.3.2.1.8
+    type: gauge
+    help: The max bandwidth of the port. - 1.3.6.1.4.1.40418.7.100.3.2.1.8
+    indexes:
+    - labelname: portIndex
+      type: gauge
+    enum_values:
+      0: default
+      1: bw100M
+      2: bw1000M
+      3: bw10000M
+      4: bw40000M
+      5: bw20000M
+      6: bw25G
+      7: bw100G
+  - name: iPAddrSubnetMask
+    oid: 1.3.6.1.4.1.40418.7.100.4.3.1.3
+    type: InetAddressIPv4
+    help: The subnet mask of this Net interface - 1.3.6.1.4.1.40418.7.100.4.3.1.3
+    indexes:
+    - labelname: iPAddrVid
+      type: gauge
+    - labelname: iPAddrIPAddress
+      type: InetAddressIPv4
+  - name: iPAddrStatus
+    oid: 1.3.6.1.4.1.40418.7.100.4.3.1.5
+    type: gauge
+    help: Now state. - 1.3.6.1.4.1.40418.7.100.4.3.1.5
+    indexes:
+    - labelname: iPAddrVid
+      type: gauge
+    - labelname: iPAddrIPAddress
+      type: InetAddressIPv4
+    enum_values:
+      0: createAndGo
+      1: active
+      2: destroy

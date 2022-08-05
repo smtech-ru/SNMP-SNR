@@ -1,0 +1,59 @@
+modules:
+  # Default IF-MIB interfaces table with ifIndex.
+  SNR:
+    walk:
+      # identifier
+      - 1.3.6.1.2.1.1.3 			#sysUpTime
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.2		# portName
+      - 1.3.6.1.2.1.2.2.1.1			# ifIndex
+      # SNR_private
+      - 1.3.6.1.4.1.40418.7.100.1.8.1.11	# sysCpuUsage
+      - 1.3.6.1.4.1.40418.7.100.1.8.1.10	# sysTemperature
+      - 1.3.6.1.4.1.40418.7.100.1.8.1.12	# sysMemoryUsage
+      - 1.3.6.1.4.1.40418.7.100.1.8.1.7		# sysMemorySize
+      - 1.3.6.1.4.1.40418.7.100.1.8.1.8 	# sysMemoryBusy
+      - 1.3.6.1.4.1.40418.7.100.1.9.1.3		# swModuleType
+      - 1.3.6.1.4.1.40418.7.100.1.7.1.2		# sysPowerState
+      - 1.3.6.1.4.1.40418.7.100.1.2		# sysHardwareVersion
+      - 1.3.6.1.4.1.40418.7.100.1.3 		# sysSoftwareVersion
+      - 1.3.6.1.4.1.40418.7.100.1.5		# sysCpuMac
+      - 1.3.6.1.4.1.40418.7.100.4.3.1.3		# ipAddrSubnetMask
+      - 1.3.6.1.4.1.40418.7.100.4.3.1.5		# ipAddrStatus
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.1		# portIndex
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.2		# portName
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.3		# switchNum
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.4		# slotNum
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.5 	# portType
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.15 	# portMode
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.7 	# bandwidthControlStatus
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.8		# maxBandwidth
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.23	# portBandWidthUsage
+      - 1.3.6.1.4.1.40418.7.100.3.2.1.28	# transceiverSn   
+      # common_MIB
+      - 1.3.6.1.2.1.31.1.1.1.6 			# ifHCInOctets
+      - 1.3.6.1.2.1.31.1.1.1.10			# ifHCOutOctets
+      - 1.3.6.1.2.1.31.1.1.1.15			# ifHighSpeed
+      - 1.3.6.1.2.1.2.2.1.7			# ifAdminStatus
+      - 1.3.6.1.2.1.2.2.1.8			# ifOperStatus
+      # STP
+      - 1.3.6.1.2.1.17.2.15.1.3			# dot1dStpPortState
+    lookups:
+      - source_indexes: [ifIndex]
+        lookup: ifAlias
+      - source_indexes: [ifIndex]
+        # Uis OID to avoid conflict with PaloAlto PAN-COMMON-MIB.
+        lookup: 1.3.6.1.2.1.2.2.1.2 # ifDescr
+      - source_indexes: [ifIndex]
+        # Use OID to avoid conflict with Netscaler NS-ROOT-MIB.
+        lookup: 1.3.6.1.2.1.31.1.1.1.1 # ifName
+    overrides:
+      ifAlias:
+        ignore: true # Lookup metric
+      ifDescr:
+        ignore: true # Lookup metric
+      ifName:
+        ignore: true # Lookup metric
+      ifType:
+        type: EnumAsInfo
+
+        # drop_source_indexes: true

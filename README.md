@@ -27,4 +27,4 @@ Metrics generated snmp_exporter by default
 * MIB browser: http://oidref.com
 * MIB SNR browser: https://mibs.observium.org/mib/SNR-SWITCH-MIB
 * SNR-SWITCH private MIB file: https://data.nag.ru/SNR%20Switches/MIBs
-#### Created by [zheleziv](https://github.com/zheleziv)
+#### The project was completed by [zheleziv](https://github.com/zheleziv) working after [SPbEC-Mining Ltd](https://github.com/smtech-ru).

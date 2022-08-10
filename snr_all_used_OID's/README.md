@@ -76,7 +76,7 @@ The only way to enable bandwidth control is to set receiveBandwidth or transmitB
 *   *   maxBandwidth ```(.1.3.6.1.4.1.40418.7.100.3.2.1.8)``` - The max bandwidth of the port
 *   *   portMode ```(.1.3.6.1.4.1.40418.7.100.3.2.1.15)``` - port mode: 1 is access, 2 is trunk, 3 is hybrid
 *   *   portBandWidthUsage ```(.1.3.6.1.4.1.40418.7.100.3.2.1.23)``` - The percentage of the port's bandwidth usage
-*   *   portBandWidthUsage ```(.1.3.6.1.4.1.40418.7.100.3.2.1.28)``` - The serial num of transceiver. If port is not a transceiver, value is null
+*   *   transceiverSn ```(.1.3.6.1.4.1.40418.7.100.3.2.1.28)``` - The serial num of transceiver. If port is not a transceiver, value is null
 
 ### Private ip configuration OID's```.1.3.6.1.4.1.40418.7.100.4...```
 

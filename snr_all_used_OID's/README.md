@@ -59,7 +59,7 @@
 
 ![MIB browser](../exmp_imgs/priPorts.jpg) 
 
-*   portCount ```(.1.3.6.1.4.1.40418.7.100.3.1)`` - The total number of ports in the system
+*   portCount ```(.1.3.6.1.4.1.40418.7.100.3.1)``` - The total number of ports in the system
 *   #> priPortTable ```(.1.3.6.1.4.1.40418.7.100.3.2)``` - A list of port entries
 *   *   portIndex ```(.1.3.6.1.4.1.40418.7.100.3.2.1.1)``` - Port No.
 *   *   portName ```(.1.3.6.1.4.1.40418.7.100.3.2.1.2)``` - Name of the port

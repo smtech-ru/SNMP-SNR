@@ -27,7 +27,7 @@
 ## SNR OID's
 ### Private system OID's```.1.3.6.1.4.1.40418.7.100.1...```
 
-![MIB browser](exmp_imgs/priSys.jpg) 
+![MIB browser](../exmp_imgs/priSys.jpg) 
 
 *   sysHardwareVersion ```(.1.3.6.1.4.1.40418.7.100.1.2)``` - The version information of switch hardware
 *   sysSoftwareVersion ```(.1.3.6.1.4.1.40418.7.100.1.3)``` - The version information of switch software
@@ -57,7 +57,7 @@
 
 ### Private ports OID's```.1.3.6.1.4.1.40418.7.100.3...```
 
-![MIB browser](exmp_imgs/priPorts.jpg) 
+![MIB browser](../exmp_imgs/priPorts.jpg) 
 
 *   portCount ```(.1.3.6.1.4.1.40418.7.100.3.1)`` - The total number of ports in the system
 *   #> priPortTable ```(.1.3.6.1.4.1.40418.7.100.3.2)``` - A list of port entries
@@ -80,7 +80,7 @@ The only way to enable bandwidth control is to set receiveBandwidth or transmitB
 
 ### Private ip configuration OID's```.1.3.6.1.4.1.40418.7.100.4...```
 
-![MIB browser](exmp_imgs/priIpConfig.jpg) 
+![MIB browser](../exmp_imgs/priIpConfig.jpg) 
 
 *   #> ipAddrTable ```(.1.3.6.1.4.1.40418.7.100.4.3)``` - A list of port entries
 *   *   iPAddrVid ```(.1.3.6.1.4.1.40418.7.100.4.3.1.1)``` - The VLAN interface being used by this table entry. Only the 

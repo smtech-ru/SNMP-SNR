@@ -1,4 +1,40 @@
 {
+    "__inputs": [
+        {
+          "name": "DS_PROMETHEUS",
+          "label": "Prometheus",
+          "description": "",
+          "type": "datasource",
+          "pluginId": "prometheus",
+          "pluginName": "Prometheus"
+        }
+      ], 
+      "__requires": [
+        {
+          "type": "grafana",
+          "id": "grafana",
+          "name": "Grafana",
+          "version": "6.2.5"
+        },
+        {
+          "type": "panel",
+          "id": "graph",
+          "name": "Graph",
+          "version": ""
+        },
+        {
+          "type": "datasource",
+          "id": "prometheus",
+          "name": "Prometheus",
+          "version": "1.0.0"
+        },
+        {
+          "type": "panel",
+          "id": "singlestat",
+          "name": "Singlestat",
+          "version": ""
+        }
+      ],
   "annotations": {
     "list": [
       {
@@ -46,6 +82,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
       "description": "Sum of scrape durations for specific instance",
       "fieldConfig": {
         "defaults": {
@@ -90,11 +127,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
-          "exemplar": true,
           "expr": "sum by (instance) (snmp_scrape_duration_seconds{job=~\"$job\"})",
           "interval": "",
           "legendFormat": " {{ instance }}",
@@ -136,6 +168,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
       "description": "Sum of scrape durations for a specific job.",
       "fieldConfig": {
         "defaults": {
@@ -182,10 +215,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sum by (job) (snmp_scrape_duration_seconds{instance=~\"$instance\"})",
           "interval": "",
@@ -271,10 +300,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysUpTime{job=~\"$job\",instance=~\"$instance\"} / 100",
           "interval": "",
@@ -283,10 +308,12 @@
         }
       ],
       "title": "System up time",
+      "datasource": "${DS_PROMETHEUS}",
       "type": "stat"
     },
     {
       "description": "Total PDUs returned across all selected target jobs and target instances. Averaged over the selected time period in Grafana.",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -347,10 +374,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sum(snmp_scrape_pdus_returned{job=~\"$job\", instance=~\"$instance\"})",
           "interval": "",
@@ -363,6 +386,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -426,10 +450,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "up{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
@@ -459,6 +479,7 @@
     },
     {
       "description": "Max: 10MB  \nRed Status: 9MB",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -515,10 +536,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "irate(ifHCInOctets{instance=~\"$instance\",job=~\"$job\"}[$__rate_interval])",
           "format": "time_series",
@@ -535,6 +552,7 @@
     },
     {
       "description": "Max: 10MB  \nRed Status: 9MB",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -591,10 +609,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "irate(ifHCOutOctets{instance=~\"$instance\",job=~\"$job\"}[$__rate_interval])",
           "format": "time_series",
@@ -611,6 +625,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -702,10 +717,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "irate(ifHCInOctets{instance=~\"$instance\",job=~\"$job\"}[$__rate_interval])",
           "format": "time_series",
@@ -716,10 +727,6 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "-irate(ifHCOutOctets{instance=~\"$instance\",job=~\"$job\"}[$__rate_interval])",
           "format": "time_series",
@@ -737,6 +744,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -828,10 +836,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "((irate(ifHCInOctets{instance=\"$instance\",job=\"$job\"}[$__rate_interval])*8) / (ifHighSpeed{instance=\"$instance\",job=\"$job\"} * 1000000)) * 100",
           "format": "time_series",
@@ -842,10 +846,6 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "((-irate(ifHCOutOctets{instance=\"$instance\",job=\"$job\"}[$__rate_interval])*8) / (ifHighSpeed{instance=\"$instance\",job=\"$job\"} * 1000000)) * 100",
           "format": "time_series",
@@ -863,6 +863,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -938,10 +939,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "ifAdminStatus{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
@@ -958,6 +955,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1025,10 +1023,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "ifOperStatus{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
@@ -1058,6 +1052,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1160,10 +1155,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "irate(ifHCInOctets{ifDescr=~\"$port_name\",job=~\"$job\",instance=~\"$instance\"}[$__rate_interval])*8",
           "format": "time_series",
@@ -1174,10 +1165,6 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "-irate(ifHCOutOctets{ifDescr=~\"$port_name\",job=~\"$job\",instance=~\"$instance\"}[$__rate_interval])*8",
           "format": "time_series",
@@ -1195,6 +1182,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1305,10 +1293,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "((irate(ifHCInOctets{ifDescr=~\"$port_name\",job=~\"$job\",instance=~\"$instance\"}[$__rate_interval])*8) / (ifHighSpeed{ifDescr=~\"$port_name\",job=~\"$job\",instance=~\"$instance\"} * 1000000)) * 100",
           "format": "time_series",
@@ -1319,10 +1303,6 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "-((irate(ifHCOutOctets{ifDescr=~\"$port_name\",job=~\"$job\",instance=~\"$instance\"}[$__rate_interval])*8) / (ifHighSpeed{ifDescr=~\"$port_name\",job=~\"$job\",instance=~\"$instance\"} * 1000000)) * 100",
           "format": "time_series",
@@ -1340,6 +1320,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1415,10 +1396,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "ifAdminStatus{ifDescr=\"$port_name\", job=~\"$job\",instance=~\"$instance\"}",
           "format": "time_series",
@@ -1435,6 +1412,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1502,10 +1480,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "ifOperStatus{ifName=\"$port_name\",job=~\"$job\",instance=~\"$instance\"}",
           "format": "time_series",
@@ -1535,6 +1509,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1634,10 +1609,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "label_join(dot1dStpPortState{job=~\"$job\",instance=~\"$instance\"}, \"ifIndex\", \"\", \"dot1dStpPort\") and on(ifIndex) ifIndex{ifDescr=\"$port_name\",job=~\"$job\",instance=~\"$instance\"}",
           "format": "time_series",
@@ -1654,6 +1625,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1778,10 +1750,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "label_join(dot1dStpPortState{job=~\"$job\",instance=\"$instance\"}, \"ifIndex\", \"\", \"dot1dStpPort\") * on(ifIndex) group_right ifIndex{job=~\"$job\",instance=\"$instance\"} /ifIndex",
           "format": "time_series",
@@ -1797,6 +1765,7 @@
     },
     {
       "description": "",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1896,10 +1865,6 @@
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "label_join(dot1dStpPortState{job=~\"$job\",instance=\"$instance\"}, \"ifIndex\", \"\", \"dot1dStpPort\") * on(ifIndex) group_right ifIndex{job=~\"$job\",instance=\"$instance\"} / ifIndex",
           "format": "time_series",
@@ -1934,6 +1899,7 @@
     },
     {
       "description": "\"if the power supply insert\"  - .1.3.6.1.4.1.40418.7.100.1.7.1.2",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1998,10 +1964,6 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysPowerState{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
@@ -2014,6 +1976,7 @@
     },
     {
       "description": "\"The version information of switch hardware \" \n1.3.6.1.4.1.40418.7.100.1.2",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2073,10 +2036,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysHardwareVersion{instance=\"$instance\", job=~\"$job\"}",
           "format": "time_series",
@@ -2090,6 +2049,7 @@
     },
     {
       "description": " \"The version information of switch software \" \n1.3.6.1.4.1.40418.7.100.1.3",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2149,10 +2109,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysSoftwareVersion{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
@@ -2166,6 +2122,7 @@
     },
     {
       "description": " \"The version information of switch software \" \n1.3.6.1.4.1.40418.7.100.1.3",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2225,10 +2182,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysCPUMac{instance=\"$instance\",job=\"$job\"}",
           "format": "time_series",
@@ -2242,6 +2195,7 @@
     },
     {
       "description": " \"Type of expansion module in this switch slot.\" .1.3.6.1.4.1.40418.7.100.1.9.1.3",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2298,10 +2252,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "swModuleType{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
@@ -2314,6 +2264,7 @@
     },
     {
       "description": " \"The CPU usage of this slot.\" \n.1.3.6.1.4.1.40418.7.100.1.8.1.11",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -2362,10 +2313,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysCpuUsage{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
@@ -2378,6 +2325,7 @@
     },
     {
       "description": " \"memory size\" \n.1.3.6.1.4.1.40418.7.100.1.8.1.7\n \"memory usage rent\" \n.1.3.6.1.4.1.40418.7.100.1.8.1.8",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -2426,10 +2374,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysMemoryBusy{instance=\"$instance\",job=\"$job\"} / sysMemorySize{instance=\"$instance\",job=\"$job\"} * 100",
           "interval": "",
@@ -2442,6 +2386,7 @@
     },
     {
       "description": " \"The CPU usage of this slot.\" \n.1.3.6.1.4.1.40418.7.100.1.8.1.11",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2510,10 +2455,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysCpuUsage{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
@@ -2526,6 +2467,7 @@
     },
     {
       "description": " \"The Temperature of this slot.80 is 80centigrade, but -100 means that the slot does not support temperature display\" \n.1.3.6.1.4.1.40418.7.100.1.8.1.10",
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2594,10 +2536,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "sysTemperature{instance=\"$instance\",job=\"$job\"}",
           "interval": "",
@@ -2715,10 +2653,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "iPAddrSubnetMask{instance=~\"$instance\",job=~\"$job\"}",
           "format": "table",
@@ -2727,10 +2661,6 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": true,
           "expr": "iPAddrStatus{instance=~\"$instance\",job=~\"$job\"}",
           "format": "table",
@@ -2799,9 +2729,11 @@
           }
         }
       ],
+      "datasource": "${DS_PROMETHEUS}",
       "type": "table"
     },
     {
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3117,10 +3049,6 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "sum(portIndex{job=~\"$job\",instance=~\"$instance\"}) by(portIndex)",
           "format": "table",
@@ -3130,10 +3058,6 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "portName{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3144,10 +3068,6 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "switchNum{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3158,10 +3078,6 @@
           "refId": "C"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "slotNum{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3172,10 +3088,6 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "portType{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3186,10 +3098,6 @@
           "refId": "E"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "portMode{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3200,10 +3108,6 @@
           "refId": "F"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "bandwidthControlStatus{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3214,10 +3118,6 @@
           "refId": "G"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "maxBandwidth{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3228,10 +3128,6 @@
           "refId": "H"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "portBandWidthUsage{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3242,10 +3138,6 @@
           "refId": "I"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "QqDH7Qcnz"
-          },
           "exemplar": false,
           "expr": "transceiverSn{job=~\"$job\",instance=~\"$instance\"}",
           "format": "table",
@@ -3332,7 +3224,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 34,
+  "schemaVersion": 1,
   "style": "dark",
   "tags": [
     "prometheus",
@@ -3343,15 +3235,8 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": false,
-          "text": "11.11.11.11",
-          "value": "11.11.11.11"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "QqDH7Qcnz"
-        },
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "query_result(sysUpTime)",
         "hide": 0,
         "includeAll": false,
@@ -3373,15 +3258,8 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "snmp_s3",
-          "value": "snmp_s3"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "QqDH7Qcnz"
-        },
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "query_result(sysCpuUsage)",
         "hide": 0,
         "includeAll": false,
@@ -3403,11 +3281,8 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "Ethernet1/0/1",
-          "value": "Ethernet1/0/1"
-        },
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "label_values(ifDescr)",
         "hide": 0,
         "includeAll": false,
